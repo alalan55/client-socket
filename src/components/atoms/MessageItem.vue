@@ -24,7 +24,7 @@ export default {
     // border: 1px solid;
     padding: $p-1 0;
     .content-message{
-        border: 1px solid red;
+        background: $blue-3;
         display: inline;
         padding: $p-1;
         border-radius: 10px;
@@ -32,6 +32,7 @@ export default {
         span{
             font-weight: 500;
             font-size: .9em;
+            color: white;
         }
     }
 }
