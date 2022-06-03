@@ -2,20 +2,16 @@
     <div class="message">
         <div class="content-message">
            <span>
-               Oi, como você está?
+               {{message}}
            </span>
         </div>
     </div>
 </template>
 
-<script>
-export default {
-    setup () {
-        
-
-        return {}
-    }
-}
+<script setup>
+const props = defineProps({
+    message: {type: String, default: 'Insira uma mensagem'}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -33,6 +29,10 @@ export default {
             font-weight: 500;
             font-size: .9em;
             color: white;
+        }
+
+        @media (max-width: $mobile-2){
+            display: inline-block;
         }
     }
 }

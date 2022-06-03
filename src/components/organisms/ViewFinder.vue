@@ -1,13 +1,24 @@
 <template>
   <div class="view">
     <div class="content-view">
-      <MessageItem v-for="item in 10" :key="item" class="message" />
+      <MessageItem v-for="item in messages" :key="item" :message="item" class="message" />
     </div>
   </div>
 </template>
 
 <script setup>
 import MessageItem from "@/components/atoms/MessageItem.vue";
+const messages = [
+  "Olá como você está?",
+  "Eu estou muito bem cara",
+  "Fala meu chapa tudo suave?",
+  "Por aqui tudo safe!",
+  "Manoooooo, esse cara só pode estar de sacanagem comigo, se viu o que ele fez?",
+  "Maluco eu vi!",
+  "Que louco, aquilo foi demais",
+  "Eu concordor",
+  "Mas no fim, o que rolou?",
+];
 </script>
 
 <style lang="scss" scoped>
@@ -41,6 +52,10 @@ import MessageItem from "@/components/atoms/MessageItem.vue";
   }
   .message {
     margin-bottom: 1rem;
+
+    @media (max-width: $mobile-2){
+        margin-bottom: .4rem;
+    }
   }
 }
 </style>
