@@ -2,20 +2,32 @@
   <div class="message">
     <div class="message-content">
       <div class="content-input">
-        <input type="text" placeholder="Digite sua mensagem" />
+        <input
+          type="text"
+          placeholder="Digite sua mensagem"
+          v-model="message"
+        />
       </div>
 
       <div class="content-action">
-        <button>Enviar</button>
+        <button @click="sendMessage">Enviar</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { ref } from "vue";
 export default {
-  setup() {
-    return {};
+  setup(props, { emit }) {
+    const message = ref("");
+    const sendMessage = () => {
+      emit("sendMessage", message.value);
+    };
+    return {
+      message,
+      sendMessage,
+    };
   },
 };
 </script>
