@@ -23,6 +23,7 @@ export default {
     const message = ref("");
     const sendMessage = () => {
       emit("sendMessage", message.value);
+      message.value = "";
     };
     return {
       message,

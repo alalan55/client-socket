@@ -2,7 +2,7 @@
   <div class="message">
     <div class="content-message">
       <span>
-        {{ message }}
+        {{ props.message }}
       </span>
     </div>
   </div>
@@ -17,7 +17,6 @@ const props = defineProps({
 <style lang="scss" scoped>
 @import "@/assets/scss/variables.scss";
 .message {
-  // border: 1px solid;
   padding: $p-1 0;
   .content-message {
     background: $blue-3;

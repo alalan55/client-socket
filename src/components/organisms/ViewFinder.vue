@@ -7,12 +7,10 @@
         :message="item"
         class="message"
       />
-      <pre>
-          alan
-
-          {{ props.messages }}
-      </pre>
     </div>
+    <pre>
+        {{messages}}
+    </pre>
   </div>
 </template>
 
@@ -22,17 +20,6 @@ import MessageItem from "@/components/atoms/MessageItem.vue";
 const props = defineProps({
   messages: { type: Array, required: true },
 });
-// const messages = [
-//   "Olá como você está?",
-//   "Eu estou muito bem cara",
-//   "Fala meu chapa tudo suave?",
-//   "Por aqui tudo safe!",
-//   "Manoooooo, esse cara só pode estar de sacanagem comigo, se viu o que ele fez?",
-//   "Maluco eu vi!",
-//   "Que louco, aquilo foi demais",
-//   "Eu concordor",
-//   "Mas no fim, o que rolou?",
-// ];
 </script>
 
 <style lang="scss" scoped>

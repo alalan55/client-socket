@@ -24,25 +24,21 @@ export default {
     const messages = ref([]);
 
     const showMessage = (message) => {
+      console.log(message, "recebido");
       messages.value.push(message);
     };
 
     const init = () => {
       if (ws) {
         ws.onerror = ws.onopen = ws.onclose = null;
-        ws.close;
+        ws.close();
       }
 
       //   ws = new WebSocket(import.meta.env.VUE_APP_URL);
       ws = new WebSocket("ws://localhost:6969");
 
-      ws.onopen = () => {
-        console.log("Conexão aberta");
-      };
-      ws.onmessage = ({ data }) => {
-        console.log("chegou mensagem aqui manooooo");
-        showMessage(data);
-      };
+      ws.onopen = () => console.log("Conexão aberta");
+      ws.onmessage = ({ data }) => showMessage(data);
       ws.onclose = () => (ws = null);
     };
 
@@ -50,11 +46,10 @@ export default {
       if (!ws) {
         console.log("Sem conexão com o web socket");
         return;
-      } else {
-        ws.send(message);
-        ws.onmessage = (data) => console.log("data aqui", data);
-        showMessage(message);
       }
+      console.log("mensagem enviada", message);
+      ws.send(message);
+      showMessage(message);
     };
 
     init();
@@ -62,44 +57,6 @@ export default {
     return { messages, sendMessage };
   },
 };
-
-//   data() {
-//     return {
-//       ws: null,
-//       messages: [],
-//     };
-//   },
-//   created(){
-//       this.init()
-//   },
-//   methods: {
-//     showMessage(message) {
-//       this.messages.push(message);
-//     },
-//     init() {
-//       if (this.ws) {
-//         this.ws.onerror = this.ws.onopen = this.ws.onclose = null;
-//         this.ws.close;
-//       }
-
-//       this.ws = new WebSocket("ws://localhost:6969");
-
-//       this.ws.onopen = () =>{
-//           console.log('Conexão aberta')
-//       }
-//       this.ws.onmessage = ({data}) => this.showMessage(data);
-//       this.ws.onclose = () => this.ws = null;
-//     },
-//     sendMessage(message){
-//         if(!this.ws){
-//             console.log('Sem conexão com a API')
-//             return
-//         }
-//         this.ws.send(message)
-//         this.showMessage(message)
-//     }
-//   },
-// };
 </script>
 
 <style lang="scss" scoped>
