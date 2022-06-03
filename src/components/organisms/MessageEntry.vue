@@ -23,14 +23,13 @@ export default {
 <style lang="scss" scoped>
 @import "@/assets/scss/variables.scss";
 .message {
-  //   background: red;
   width: 100%;
   height: 100%;
   padding: $p-1 0;
 
   .message-content {
     background: white;
-     border-radius: 10px;
+    border-radius: 10px;
     height: 100%;
     width: 100%;
     display: grid;
@@ -58,7 +57,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      padding: 0 .8rem 0 .5rem;
+      padding: 0 0.8rem 0 0.5rem;
 
       button {
         padding: 1rem 0.5rem;
@@ -75,24 +74,22 @@ export default {
           background: $blue-2;
         }
 
-        @media (max-width:$mobile) {
+        @media (max-width: $mobile) {
           width: 100%;
-          padding: .8em .5rem;
+          padding: 0.8em 0.5rem;
         }
 
-        @media (min-width: $x-large){
-            font-size: 1.1em;
-            font-weight: 600;
-            height: 60%;
-            padding: .8rem 1.5rem;
+        @media (min-width: $x-large) {
+          font-size: 1.1em;
+          font-weight: 600;
+          height: 60%;
+          padding: 0.8rem 1.5rem;
         }
-
-
       }
     }
 
     & > div {
-        // border: 1px solid blue;
+      // border: 1px solid blue;
     }
   }
 }
