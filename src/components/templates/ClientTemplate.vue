@@ -31,6 +31,7 @@ import Message from "@/components/organisms/MessageEntry.vue";
     "visor"
     "visor"
     "message";
+    transition: .2s ease-in-out;
 
   .view-area {
     grid-area: visor;
@@ -39,10 +40,21 @@ import Message from "@/components/organisms/MessageEntry.vue";
     grid-area: message;
   }
 
+  @media (max-width: $mobile) {
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-areas:
+      "visor"
+      "visor"
+      "visor"
+      "visor"
+      "visor"
+      "message";
+  }
+
   & > div {
     border-radius: 10px;
     overflow: hidden;
-    border: 1px solid;
+    // border: 1px solid;
   }
 }
 </style>

@@ -26,10 +26,11 @@ export default {
   //   background: red;
   width: 100%;
   height: 100%;
-  padding: $p-1;
+  padding: $p-1 0;
 
   .message-content {
-    border: 1px solid;
+    background: white;
+     border-radius: 10px;
     height: 100%;
     width: 100%;
     display: grid;
@@ -40,13 +41,58 @@ export default {
 
     .content-input {
       grid-area: input;
+      input {
+        width: 100%;
+        height: 100%;
+        padding: 1rem;
+        background: none;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
     }
     .content-action {
       grid-area: action;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0 .8rem 0 .5rem;
+
+      button {
+        padding: 1rem 0.5rem;
+        border-radius: 10px;
+        border: none;
+        background: $blue-1;
+        color: white;
+        font-weight: 500;
+        width: 150px;
+        cursor: pointer;
+        transition: 0.2s ease-in-out;
+
+        &:hover {
+          background: $blue-2;
+        }
+
+        @media (max-width:$mobile) {
+          width: 100%;
+          padding: .8em .5rem;
+        }
+
+        @media (min-width: $x-large){
+            font-size: 1.1em;
+            font-weight: 600;
+            height: 60%;
+            padding: .8rem 1.5rem;
+        }
+
+
+      }
     }
 
     & > div {
-      border: 1px solid blue;
+        // border: 1px solid blue;
     }
   }
 }
