@@ -29,16 +29,19 @@ export default {
 @import "@/assets/scss/variables.scss";
 .message {
   padding: $p-1 0;
+ 
   .content-message {
     background: $blue-3;
-    display: inline;
+    display: inline ;
     padding: $p-1;
     border-radius: 10px;
+     max-width: 100% !important;
 
     span {
       font-weight: 500;
       font-size: 0.9em;
       color: white;
+      word-wrap:break-word;
     }
 
     @media (max-width: $mobile-2) {
