@@ -25,7 +25,6 @@ export default {
 
     const showMessage = (message) => {
       console.log(message, "recebido");
-      messages.value.push(message);
     };
 
     const init = () => {
@@ -35,9 +34,8 @@ export default {
       }
 
       //   ws = new WebSocket(import.meta.env.VUE_APP_URL);
-      ws = new WebSocket("ws://localhost:6969");
-
-      ws.onopen = () => console.log("Conexão aberta");
+      ws = new WebSocket(import.meta.env.VITE_APP_URL);
+      ws.onopen = () => console.log("Conexão aberta!");
       ws.onmessage = ({ data }) => showMessage(data);
       ws.onclose = () => (ws = null);
     };

@@ -8,9 +8,6 @@
         class="message"
       />
     </div>
-    <pre>
-        {{messages}}
-    </pre>
   </div>
 </template>
 
