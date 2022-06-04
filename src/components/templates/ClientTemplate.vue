@@ -8,7 +8,11 @@
     </div>
 
     <Teleport to="#modal">
-      <PushNotification :message="message" v-if="pushIsOpen" stylePush="success" />
+      <PushNotification
+        :message="message"
+        v-if="pushIsOpen"
+        stylePush="success"
+      />
     </Teleport>
   </div>
 </template>
@@ -49,7 +53,7 @@ export default {
         }, 1500);
         setTimeout(() => {
           pushIsOpen.value = false;
-        }, 3500);
+        }, 3000);
       };
       ws.onmessage = ({ data }) => showMessage(data);
       ws.onclose = () => (ws = null);
@@ -60,7 +64,7 @@ export default {
         console.log("Sem conexão com o web socket");
         return;
       }
-      ws.send(message);
+      ws.send(JSON.stringify(message));
       showMessage(message);
     };
 

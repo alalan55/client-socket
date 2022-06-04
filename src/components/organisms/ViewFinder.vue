@@ -2,9 +2,9 @@
   <div class="view">
     <div class="content-view">
       <MessageItem
-        v-for="item in props.messages"
-        :key="item"
-        :message="item"
+        v-for="(item, idx) in props.messages"
+        :key="idx"
+        :info="item"
         class="message"
       />
     </div>

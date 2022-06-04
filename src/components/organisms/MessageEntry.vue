@@ -23,8 +23,17 @@ export default {
   setup(props, { emit }) {
     const message = ref("");
     const sendMessage = () => {
-      emit("sendMessage", message.value);
-      message.value = "";
+      // emit("sendMessage", message.value);
+      
+
+      let data = new Date();
+      let formatedDate = `${data.getDate()}/${data.getMonth() + 1}/${data.getFullYear()} ${data.getHours()}:${data.getMinutes()}h`;
+      // console.log(formatedDate);
+
+      let dataSending = { message: message.value, time: formatedDate}
+
+          emit("sendMessage",dataSending);
+          message.value = "";
     };
     return {
       message,

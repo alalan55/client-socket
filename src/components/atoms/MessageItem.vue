@@ -2,16 +2,27 @@
   <div class="message">
     <div class="content-message">
       <span>
-        {{ props.message }}
+        {{ formatedInfo.message }}
       </span>
     </div>
   </div>
 </template>
 
-<script setup>
-const props = defineProps({
-  message: { type: String, default: "Insira uma mensagem" },
-});
+<script>
+import { ref } from "vue";
+
+export default {
+  props: {
+    info: { type: [Object, String], required: true },
+  },
+  setup(props) {
+    const formatedInfo = ref(props.info);
+    if (typeof props.info == "string") {
+      formatedInfo.value = JSON.parse(props.info);
+    }
+    return { formatedInfo };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
