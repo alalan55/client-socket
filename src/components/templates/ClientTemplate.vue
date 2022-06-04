@@ -6,6 +6,10 @@
     <div class="message-area">
       <Message @sendMessage="sendMessage" />
     </div>
+
+    <Teleport to="#modal">
+      <PushNotification :message="message" v-if="pushIsOpen" stylePush="success" />
+    </Teleport>
   </div>
 </template>
 
@@ -13,15 +17,19 @@
 import { ref } from "vue";
 import View from "@/components/organisms/ViewFinder.vue";
 import Message from "@/components/organisms/MessageEntry.vue";
+import PushNotification from "../atoms/PushNotification.vue";
 
 export default {
   components: {
     Message,
     View,
+    PushNotification,
   },
   setup() {
     let ws;
     const messages = ref([]);
+    const message = ref("");
+    const pushIsOpen = ref(false);
 
     const showMessage = (message) => {
       console.log(message, "recebido");
@@ -32,10 +40,17 @@ export default {
         ws.onerror = ws.onopen = ws.onclose = null;
         ws.close();
       }
-
-      //   ws = new WebSocket(import.meta.env.VUE_APP_URL);
       ws = new WebSocket(import.meta.env.VITE_APP_URL);
-      ws.onopen = () => console.log("Conexão aberta!");
+      // ws.onopen = () => console.log("Conexão aberta!");
+      ws.onopen = () => {
+        message.value = "Conexão aberta!";
+        setTimeout(() => {
+          pushIsOpen.value = true;
+        }, 1500);
+        setTimeout(() => {
+          pushIsOpen.value = false;
+        }, 3500);
+      };
       ws.onmessage = ({ data }) => showMessage(data);
       ws.onclose = () => (ws = null);
     };
@@ -45,14 +60,13 @@ export default {
         console.log("Sem conexão com o web socket");
         return;
       }
-      console.log("mensagem enviada", message);
       ws.send(message);
       showMessage(message);
     };
 
     init();
 
-    return { messages, sendMessage };
+    return { messages, sendMessage, message, pushIsOpen };
   },
 };
 </script>
