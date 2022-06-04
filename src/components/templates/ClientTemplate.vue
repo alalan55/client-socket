@@ -32,7 +32,7 @@ export default {
     const pushIsOpen = ref(false);
 
     const showMessage = (message) => {
-      console.log(message, "recebido");
+      messages.value.push(message);
     };
 
     const init = () => {
@@ -41,7 +41,7 @@ export default {
         ws.close();
       }
       ws = new WebSocket(import.meta.env.VITE_APP_URL);
-      // ws.onopen = () => console.log("Conexão aberta!");
+
       ws.onopen = () => {
         message.value = "Conexão aberta!";
         setTimeout(() => {

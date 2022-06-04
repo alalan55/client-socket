@@ -6,6 +6,7 @@
           type="text"
           placeholder="Digite sua mensagem"
           v-model="message"
+          @keyup.enter="sendMessage"
         />
       </div>
 
